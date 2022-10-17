@@ -2,16 +2,16 @@
 
 # Command
 Commande permettant de lancer le projet sur la partie frontend
-**npm run start:frontend**
+`npm run start:frontend`
 
 Commande permettant de lancer le projet sur le desktop
-**npm run start:desktop**
+`npm run start:desktop`
 
 Commande permettant de build le projet sur la partie frontend
-**npm run build:frontend**
+`npm run build:frontend`
 
 Commande permettant de build  le projet sur la partie desktop
-**npm run build:desktop**
+`npm run build:desktop`
 
 # Fortil
 

@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "technical-test": "apps/technical-test",
+    "technical-test-desktop": "apps/technical-test-desktop"
+  }
+}

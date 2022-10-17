@@ -1,0 +1,78 @@
+{
+  "root": "apps/technical-test-desktop",
+  "sourceRoot": "apps/technical-test-desktop/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx-electron:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/technical-test-desktop",
+        "main": "apps/technical-test-desktop/src/main.ts",
+        "tsConfig": "apps/technical-test-desktop/tsconfig.app.json",
+        "assets": [
+          "apps/technical-test-desktop/src/assets"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/technical-test-desktop/src/environments/environment.ts",
+              "with": "apps/technical-test-desktop/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "nx-electron:execute",
+      "options": {
+        "buildTarget": "technical-test-desktop:build"
+      }
+    },
+    "package": {
+      "executor": "nx-electron:package",
+      "options": {
+        "name": "technical-test-desktop",
+        "frontendProject": "technical-test",
+        "outputPath": "dist/packages",
+        "prepackageOnly": true
+      }
+    },
+    "make": {
+      "executor": "nx-electron:make",
+      "options": {
+        "name": "technical-test-desktop",
+        "frontendProject": "technical-test",
+        "outputPath": "dist/executables"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/technical-test-desktop/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/technical-test-desktop"
+      ],
+      "options": {
+        "jestConfig": "apps/technical-test-desktop/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+<mat-card class="image">
+  <h1 class="title" style="margin-top: 70px">Formulaire TESTIA</h1>
+  <mat-card-content>
+    <mat-card class="main-center">
+      <mat-card-content>
+        <form
+          method="post"
+          #dataPost="ngForm"
+          (ngSubmit)="submit(dataPost.value)"
+        >
+          <h2><mat-label>Type de défault :</mat-label></h2>
+          <div *ngFor="let def of defaultData">
+            <mat-checkbox
+              name="default"
+              value="{{ def.name }}"
+              [(ngModel)]="def.checked"
+              >{{ def.name }}</mat-checkbox
+            >
+          </div>
+
+          <br />
+          <br />
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Nom agent : </mat-label>
+            <input
+              required
+              name="nom"
+              [(ngModel)]="nom"
+              pattern="[a-zA-Z ]*"
+              matInput
+            />
+          </mat-form-field>
+          <br />
+          <br />
+
+          <mat-label>Commentaire : </mat-label>
+          <textarea
+            placeholder="Facultatif"
+            name="commentaire"
+            [(ngModel)]="commentaire"
+            matInput
+          ></textarea>
+
+          <br />
+          <br />
+
+          <section>
+            <div class="button">
+              <button
+                mat-stroked-button
+                color="primary"
+                type="submit"
+                [disabled]="
+                  (defaultData[0].checked === false &&
+                    defaultData[1].checked === false &&
+                    defaultData[2].checked === false) ||
+                  !nom
+                "
+              >
+                Envoyer
+              </button>
+            </div>
+          </section>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+</mat-card>
